@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APP Show</title>
+</head>
+<body>
+    <h1>All Listings</h1>
+    <button><a href="/listings/create">Create Listing</a></button>
+    <ul>
+        <% for(let data of allData) {%>
+            <li><a href="/listings/<%=data._id %>">Title: <%= data.title%></a>  </li>
+            <% } %>
+    </ul>
+</body>
+</html>

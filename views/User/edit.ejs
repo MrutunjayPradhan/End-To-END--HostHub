@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Details</title>
+</head>
+<body>
+    <form method="post" action="/listings/<%= doc._id %>?_method=PATCH">
+        <input type="text" name="listing[title]" value="<%= doc.title %>">
+        <input type="text" name="listing[description]" value="<%= doc.description %>">
+        <input type="text" name="listing[image]" value="<%= doc.image %>">
+        <input type="text" name="listing[price]" value="<%= doc.price %>">
+        <input type="text" name="listing[location]" value="<%= doc.location %>">
+        <input type="text" name="listing[country]" value="<%= doc.country %>">
+        <button>Submit</button>
+
+    </form>
+</body>
+</html>

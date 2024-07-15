@@ -4,15 +4,16 @@ const path = require("path")
 const methodOverride = require('method-override')
 const mongoose = require("mongoose")
 const listing = require("./Models/listing");
+const ejsMate =require("ejs-mate")
 
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
+app.engine('ejs', ejsMate);
 
 app.use(express.static(path.join(__dirname,"public")))
 app.use(express.urlencoded({extended:true}));
-
-
 app.use(methodOverride('_method'))
+app.use(express.static(path.join(__dirname,"public")))
 
 main()
 .then(()=>{console.log("connected to db")})

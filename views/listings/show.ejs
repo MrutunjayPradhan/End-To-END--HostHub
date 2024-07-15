@@ -1,21 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<% layout("/layouts/boilerplate") %>
 <body>
-    <h2>Here Is The Information In Details</h2>
-    <ul>
-        <li><%= value.title %></li>
-        <li><%= value.description %></li>
-        <li><%= value.price %></li>
-        <li><%= value.location %></li>
-        <li><%= value.country %></li>
-    </ul> 
-    <a href="/listings/edit/<%=value._id%>">Edit Listing</a> 
-    <a href="/listings/delete/<%=value._id%>">Delete Listing</a> 
+    
+    <div class="row">
+      <div class="col-6 offset-3">       
+    <div class="card mt-3" style="width: 100%;">
+        <img src="<%= value.image %>" class="card-img-top" alt="House Image ">
+        <div class="card-body">
+          <p class="card-text">
+            <b><%= value.title %></b><br>
+            <%= value.description %> <br>
+            &#8377; <%= value.price.toLocaleString("en-In") %><br>
+            <%= value.location %><br>
+            <%= value.country %><br><br>
+            <button class="btn green-btn">
+                <a href="/listings/edit/<%=value._id%>">Edit</a> 
+            </button>
+            <button class="btn red-btn">
+                <a href="/listings/delete/<%=value._id%>">Delete</a> 
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+</div>
+    
     
 </body>
-</html>

@@ -1,17 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APP Show</title>
-</head>
+<% layout("/layouts/boilerplate") %>
 <body>
-    <h1>All Listings</h1>
-    <button><a href="/listings/create">Create Listing</a></button>
-    <ul>
+    <h3>All Listings</h3>
+    <!-- <button><a href="/listings/create">Create Listing</a></button> -->
+    <div class="def">
+
         <% for(let data of allData) {%>
-            <li><a href="/listings/<%=data._id %>">Title: <%= data.title%></a>  </li>
-            <% } %>
-    </ul>
+                  <a href="/listings/<%= data._id %>" class="listing-link">
+
+                    <div class="card" style="width: 19rem;">
+                        <img src="<%= data.image %>" class="card-img-top" alt="Home Image">
+                        <div class="card-body">
+                          <p class="card-text">
+                           <b>  <%= data.title%></b> <br>
+                            <small>&#8377;<%= data.price.toLocaleString("en-In")%> night</small>
+                           </p>
+                        </div>
+                      </div>               
+                  </a>
+             <% } %>
+    </div>  
 </body>
-</html>

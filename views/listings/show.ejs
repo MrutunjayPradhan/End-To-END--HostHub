@@ -24,7 +24,7 @@
     <div class="col-8 offset-2">
       <h4>Leave a review</h4>
 
-      <form action="/listings/<%= value._id %>/reviews" method="post">
+      <form action="/listings/<%= value._id %>/reviews" method="POST">
         <div class="mb-3">
           <label for="rating" class="form-label">Rating</label>
           <input
@@ -55,16 +55,14 @@
         <% for(review of value.reviews){%>
         <div class="card col-5 ms-3" >
           <div class="card-body">
-            <h5 class="card-title">Harry</h5>
+            <h5 class="card-title">Harry </h5>
             <h6 class="card-subtitle mb-2 text-body-secondary">
                <%= review.rating %> Stars
             </h6>
             <p class="card-text"><%= review.comment %></p>
-            <button class="btn red-btn">
-              <a href="/listings/<%=value._id%>/delete/<%= review._id %>"
-                >Delete</a
-              >
-            </button>
+            <form action="/listings/<%=value._id%>/reviews/<%= review._id%>?_method=DELETE" method="post">
+              <button class="btn red-btn"><small><i class="fa-solid fa-trash-arrow-up"></i></small></button>
+            </form>   
           </div>
         </div>
 

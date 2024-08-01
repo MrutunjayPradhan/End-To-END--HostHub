@@ -7,9 +7,15 @@ const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError");
 const session= require("express-session");
 const flash = require("connect-flash");
+//Autherization
+const User = require("./Models/user")
+const passport = require("passport");
+const localStrategy = require("passport-local");
+
 
 const listings = require("./router/listing");
 const reviews = require("./router/review");
+const users = require("./router/user");
 
 
 app.set("view engine", "ejs");
@@ -33,16 +39,26 @@ const sessionOption={
 app.use(session(sessionOption));
 app.use(flash());
 
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
 //middleware to acces flash message 
 app.use((req,res,next)=>{
   res.locals.success=req.flash("success");
-  res.locals.fail=req.flash("fail");
+  res.locals.fail=req.flash("error");
+  res.locals.curUser=req.user;
   next();
 })
 
 //routs
 app.use("/listings", listings);
 app.use("/listings/:id/reviews", reviews)
+app.use("/",users)
 
 main()
   .then(() => {

@@ -1,0 +1,51 @@
+<% layout("/layouts/boilerplate") %>
+
+    <body>
+        <div class="row">
+            <div class="col-7 offset-3">
+                <h1>Login Form</h1>
+            
+                <form method="post" action="/signup" novalidate class="needs-validation">
+                    <div class="row">
+                        <div class="mb-3 col-6">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" id="firstName" name="user[firstName]" placeholder="Firstname here"
+                                class="form-control" required />
+                            <div class="valid-feedback">Looks good!</div>
+                            <div class="invalid-feedback">Add your firstname here</div>
+                        </div>
+                        <div class="mb-3 col-5 offset-1">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" id="lastName" name="user[lastName]" placeholder="Wrte your lastName"
+                                class="form-control" required />
+                            <div class="valid-feedback">Looks good!</div>
+                            <div class="invalid-feedback">Add your lastname here</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Emailid</label>
+                        <input type="email" id="email" name="user[email]" placeholder="Wrte your Email"
+                            class="form-control" required />
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Add your Home title here</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username *" class="form-label">Username</label>
+                        <input type="text" id="username" name="user[username]" placeholder="i_am_Xyz" class="form-control"
+                            required />
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Write your username here</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">password *</label>
+                        <input type="password" id="password" name="user[password]" placeholder="password" class="form-control"
+                        required />
+                        <div class="valid-feedback">Looks good!</div>
+                        <div class="invalid-feedback">Add your password here</div>
+                    </div>
+                    <button class="btn green-btn">Submit</button>
+                </form>
+
+            </div>
+        </div>
+    </body>

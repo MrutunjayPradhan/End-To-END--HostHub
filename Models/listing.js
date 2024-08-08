@@ -10,9 +10,8 @@ const listingSchema = Schema({
     },
     description:String,
     image:{
-        type:String,
-        set:(v)=>v==="" ? "https://fancyhouse-design.com/wp-content/uploads/2024/05/A-black-trendsetting-propertie-for-the-luxury-living.jpg":v,
-        default:"https://fancyhouse-design.com/wp-content/uploads/2024/05/A-black-trendsetting-propertie-for-the-luxury-living.jpg"
+       url:String,
+       filename:String
     },
     price:Number,
     location:String,

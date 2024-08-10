@@ -2,8 +2,13 @@
 <body>
   <div class="row">
     <div class="col-8 offset-2">
-      <form method="post" action="/listings/<%= doc._id %>?_method=PATCH"  novalidate
-        class="needs-validation">
+      <form
+        method="post"
+        action="/listings/<%= doc._id %>?_method=PATCH"
+        novalidate
+        class="needs-validation"
+        enctype="multipart/form-data"
+      >
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
           <input
@@ -15,6 +20,7 @@
             required
           />
         </div>
+        
         <div class="mb-3">
           <label for="description" class="form-label">Description</label>
           <textarea
@@ -23,45 +29,45 @@
             id="description"
             name="listing[description]"
             required
-            ><%= doc.description %></textarea>
+          ><%= doc.description %></textarea
+          >
         </div>
         <div class="mb-3">
-          <label for="image" class="form-label">Image URL</label>
+          <img src=<%= img %> alt="">
+          <br>
+          <label for="image" class="form-label"> Upload New Listing Image</label>
           <input
-            type="text"
+            type="file"
             class="form-control"
             id="image"
             name="listing[image]"
-            value="<%= doc.image %>"
-            required
           />
         </div>
         <div class="row">
-            <div class="mb-3 col-md-4">
-                <label for="price" class="form-label">Price</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="price"
-                  name="listing[price]"
-                  value="<%= doc.price %>"
-                  required
-                />
-               
-              </div>
-              <div class="mb-3 col-md-8">
-                <label for="country" class="form-label">Country</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="country"
-                  name="listing[country]"
-                  value="<%= doc.country %>"
-                  required
-                />
-              </div>
+          <div class="mb-3 col-md-4">
+            <label for="price" class="form-label">Price</label>
+            <input
+              type="number"
+              class="form-control"
+              id="price"
+              name="listing[price]"
+              value="<%= doc.price %>"
+              required
+            />
+          </div>
+          <div class="mb-3 col-md-8">
+            <label for="country" class="form-label">Country</label>
+            <input
+              type="text"
+              class="form-control"
+              id="country"
+              name="listing[country]"
+              value="<%= doc.country %>"
+              required
+            />
+          </div>
         </div>
-      
+
         <div class="mb-3">
           <label for="location" class="form-label">Location</label>
 
@@ -74,7 +80,7 @@
             required
           />
         </div>
-        
+
         <button class="btn green-btn">Submit</button>
       </form>
     </div>

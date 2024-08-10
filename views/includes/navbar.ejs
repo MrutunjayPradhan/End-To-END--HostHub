@@ -1,24 +1,55 @@
 <nav class="navbar navbar-expand-md bg-body-light sticky-top border-bottom">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"><i class="fa-solid fa-location-arrow"></i>  HostHub</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link "  href="#">Home</a>
-          <a class="nav-link" href="/listings">All listings</a>
-          <a class="nav-link" href="/listings/create">Create Listings</a>        
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings"
+      ><i class="fa-solid fa-location-arrow"></i> HostHub</a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="#">Home</a>        
+      </div>
+      <div class="navbar-nav ms-auto">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search destination" aria-label="Search">
+          <button class="btn btn-search" type="submit">Search</button>
+        </form>
+      </div>
+      <div class="navbar-nav ms-auto mr-2">
+        <a class="nav-link" href="/listings/create"><i>Add yourHome</i></a>
+        <% if(curUser) {%>
+          <%= curUser.username %>
+          <% } %> 
+        <div class="options flex">
+          <i class="fa-solid fa-bars"></i>
+          <div id="profile" class="flex">
+            <% if(!curUser) {%>
+            <i class="fa-solid fa-user-large-slash"></i>
+            <% } %> <% if(curUser) {%>
+              <i class="fa-solid fa-user-shield"></i>
+            <% } %>
+          </div>
         </div>
-        <div class="navbar-nav ms-auto">
+        <div id="details" class="none">
           <% if(!curUser) {%>
-          <a class="nav-link "  href="/signup">Signup</a>
+          <a class="nav-link" href="/signup">Signup </a>
           <a class="nav-link" href="/login">Login</a>
+          <% } %> <% if(curUser) {%>
+          <a class="nav-link" href="/logout">Logout</a>
           <% } %>
-          <% if(curUser) {%>
-          <a class="nav-link" href="/logout">Logout</a>   
-          <% } %>     
+          <hr>
+          <a class="nav-link" href="/listings/create"><i>Add yourHome</i></a>
         </div>
       </div>
     </div>
-  </nav>
+  </div>
+</nav>

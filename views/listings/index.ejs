@@ -1,22 +1,86 @@
 <% layout("/layouts/boilerplate") %>
 <body>
-    <h3>All Listings</h3>
-    <!-- <button><a href="/listings/create">Create Listing</a></button> -->
-    <div class="def">
-
-        <% for(let data of allData) {%>
-                  <a href="/listings/<%= data._id %>" class="listing-link">
-
-                    <div class="card" style="width: 19rem;">
-                        <img src="<%= data.image.url %>" class="card-img-top" alt="Home Image">
-                        <div class="card-body">
-                          <p class="card-text">
-                           <b>  <%= data.title%></b> <br>
-                            <small>&#8377;<%= data.price.toLocaleString("en-In")%> night</small>
-                           </p>
-                        </div>
-                      </div>               
-                  </a>
-             <% } %>
-    </div>  
+  <!-- <h3>All Listings</h3> -->
+  <!-- <button><a href="/listings/create">Create Listing</a></button> -->
+   <div id="allOptions " class="flex">
+    <div id="filters">
+      <div class="filter">
+        <i class="fa-solid fa-umbrella-beach"></i>
+        <p>Beach</p>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-house-signal"></i>
+         <p>Rooms</p>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-mountain-city"></i>
+         <p>Mounatin</p>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-fire-flame-curved"></i>
+         <p>Trending</p>
+      </div>
+      <div class="filter">
+        <i class="fa-brands fa-fort-awesome"></i>
+         <p>Castles</p>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-water-ladder"></i>
+         <p>Pools</p>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-campground"></i>
+         <p>Camps</p>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-cow"></i>
+         <p>Farms</p>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-building"></i>
+         <p>Buildings</p>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-person-snowboarding"></i>
+         <p>Snowparks</p>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-sailboat"></i>
+         <p>Boating</p>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-plane-arrival"></i>
+         <p>Airfields</p>
+      </div>
+      <div class="filter">
+        <i class="fa-solid fa-train-tram"></i>
+         <p>Stations</p>
+      </div>
+      <div class="right-Scroll"><i class="fa-solid fa-chevron-right"></i></div>
+     </div>
+     <div class="taxAdd form-check form-switch">
+       <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxces</label>
+       <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+     </div>
+   </div>
+ 
+  <div class="def">
+    <% for(let data of allData) {%>
+    <a href="/listings/<%= data._id %>" class="listing-link">
+      <div class="card" style="width: 19rem">
+        <img
+          src="<%= data.image.url %>"
+          class="card-img-top"
+          alt="Home Image"
+        />
+        <div class="card-body">
+          <p class="card-text">
+            <b> <%= data.title%></b> <br />
+            <small>&#8377;<%= data.price.toLocaleString("en-In")%> night</small>
+          </p>
+        </div>
+      </div>
+    </a>
+    <% } %>
+  </div>
 </body>

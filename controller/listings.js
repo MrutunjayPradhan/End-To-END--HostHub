@@ -26,13 +26,21 @@ module.exports.addListing = async (req, res, next) => {
 module.exports.editForm = async (req, res, next) => {
   let { id } = req.params;
   let doc = await listing.findById(id);
-  res.render("User/edit.ejs", { doc });
+  let img = doc.image.url;
+  img.replace("/upload","/upload/h_250")
+  res.render("User/edit.ejs", { doc,img });
 };
 
 module.exports.update = async (req, res, next) => {
   let { id } = req.params;
   // deconstructing the listing inside req.body
-  await listing.findByIdAndUpdate(id, { ...req.body.listing });
+  let Listing = await listing.findByIdAndUpdate(id, { ...req.body.listing });
+  if(req.file){
+    let url =req.file.path;
+    let filename =req.file.filename;
+    Listing.image={url,filename};
+    Listing.save();
+  }
   req.flash("success", "Edited successfully");
   res.redirect(`/listings/${id}`);
 };

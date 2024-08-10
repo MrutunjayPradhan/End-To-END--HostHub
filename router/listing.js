@@ -27,7 +27,7 @@ router.get("/create",isLogedIn, create);
 router
   .route("/:id")
   //Update Route
-  .patch(isLogedIn, isOwner, wrapAsync(update))
+  .patch(isLogedIn, isOwner,upload.single('listing[image]'), wrapAsync(update))
   //Show Route
   .get(wrapAsync(show));
 
